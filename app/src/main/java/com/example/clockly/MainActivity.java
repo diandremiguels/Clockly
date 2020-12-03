@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         // test method
         // testing push
+        //Testing push - kriti
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
