@@ -3,6 +3,7 @@ package com.example.clockly;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,7 +23,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity  {
     private RecyclerView taskRecyclerView;
     private ToDoAdapter tasksAdapter;
     private DrawerLayout drawerLayout;
@@ -35,15 +36,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //This is the menu bar
-        drawerLayout = (DrawerLayout)findViewById(R.id.drawer);
-        uToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open, R.string.close );
-        drawerLayout.addDrawerListener(uToggle);
-        uToggle.syncState();
-        getSupportActionBar().setTitle("Daily Tasks");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        //sets up listener for buttons in navigation drawer
-        setNavigationViewListener(); //IMPORTANT-- WITHOUT THIS, BUTTONS DON'T WORK
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.topAppBar);
+        setSupportActionBar(myToolbar);
 
         //This is for the tasks view
         taskList = new ArrayList<>();
@@ -61,43 +55,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         taskList.add(task);
         taskList.add(task);
         tasksAdapter.setTasks(taskList);
-        button = (FloatingActionButton) findViewById(R.id.button);
-        button.setOnClickListener (new View.OnClickListener() {
-            @NonNull
-            @Override
-            public void onClick(View view) {
-                openDialog();
-            }
-
-        });
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(uToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void setNavigationViewListener() {
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item){
-        int id = item.getItemId();
-        if (id == R.id.schedule) {
-            Intent intent = new Intent(MainActivity.this, ScheduleActivity.class);
-            startActivity(intent);
-        }
-        return true;
-    }
 
     public void openDialog () {
         dialog dialog = new dialog();
         dialog.show(getSupportFragmentManager(),"example dialog");
     }
+    public void openRequiredTimeDialog() {
+        dialogRequiredTime dialog = new dialogRequiredTime();
+        dialog.show(getSupportFragmentManager(), "required time dialog");
+    }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.navigation_menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.tasks:
+                openDialog();
+                return true;
+            case R.id.required_times:
+                openRequiredTimeDialog();
+                return true;
+        }
+        return true;
+    }
+
 
 }

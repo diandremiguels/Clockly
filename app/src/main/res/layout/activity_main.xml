@@ -5,40 +5,49 @@
     android:layout_width = "match_parent"
     android:layout_height = "match_parent"
     tools:context = ".MainActivity"
-    android:id="@+id/drawer"
-    >
+    android:id="@+id/drawer">
     <RelativeLayout
         android:layout_width = "match_parent"
         android:layout_height = "match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:id = "@+id/fragment_container">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/topAppBar"
+            android:background = "@color/Light_Blue"
+            android:theme = "@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:layout_width="match_parent"
+            android:layout_height = "?attr/actionBarSize"
+            app:menu="@menu/navigation_menu"
+            app:title="  Daily Tasks" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/tasksRecyclerView"
+            android:layout_below = "@id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="true"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
+        <Button
+            android:id = "@+id/schedule_button"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_margin = "32dp"
-            android:layout_alignParentRight="true"
-
-            android:backgroundTint="@color/Light_Blue"
-            android:src="@drawable/ic_baseline_add" />
+            android:layout_below = "@id/tasksRecyclerView"
+            android:layout_centerInParent="true"
+            android:background = "@color/Light_Blue"
+            android:layout_marginTop="20dp"
+            android:text = "Create Schedule"
+            android:textColor="@color/white"
+            android:padding= "10dp"/>
 
     </RelativeLayout>
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:menu="@menu/navigation_menu"
-        app:headerLayout="@layout/header"
-        android:layout_gravity = "start"
-        />
-
 
 </androidx.drawerlayout.widget.DrawerLayout>

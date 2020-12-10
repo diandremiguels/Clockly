@@ -7,17 +7,25 @@
 
 
     <EditText
-        android:id="@+id/taskname"
+        android:id="@+id/requiredTaskName"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="Task Name"
+        android:hint="Required Time Name"
         android:inputType="textShortMessage" />
     <EditText
-        android:id="@+id/Duration"
+        android:id="@+id/taskStartTime"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:hint="Duration in Minutes"
-        android:inputType= "number"
-        android:layout_below = "@+id/taskname" />
+        android:hint="Start Time"
+        android:inputType= "time"
+        android:layout_below = "@+id/requiredTaskName" />
+    <EditText
+        android:id = "@+id/taskEndTime"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:hint="End Time"
+        android:inputType="time"
+        android:layout_below = "@+id/taskStartTime"
+        />
 
 </RelativeLayout>
