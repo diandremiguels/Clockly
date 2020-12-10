@@ -164,12 +164,73 @@ public class Algorithm {
         return smallerTasks;
     }
 
+    // Create a method that takes in a list of tasks in string form and adds them all to the task map
+    // assume the strings are each in the form "task time in minutes" "task name"
+    public void addAllTasks(List<String> tasks){
+        for (String task : tasks){
+            taskStringToMap(task);
+        }
+    }
 
-    // To store in database, must turn each key / value set into a single string
-    // to use database values, must turn each string into a key / value set
-    // only need to store tasks in database because algorithm will calculate schedule
-    // every time it displays, won't be saved
+    // Create a method that takes in a list of requirements in string form and adds them all to the task map
+    // assume the strings are each in the form "start time" "end time" "task name"
+    public void addAllRequirements(List<String> requirements){
+        for (String task : requirements){
+            String[] words = task.split(" ");
+            if (words.length >= 3){
+                int startTime = this.changeTime(words[0]);
+                int endTime = this.changeTime(words[1]);
+                String name = "";
+                for (int i = 2; i < words.length; i++){
+                    name += words[i] + " ";
+                }
+                this.scheduleActivity(name.trim(), startTime, endTime);
+            }
+        }
+    }
 
+    // Converts a String representation of a time to an int (minute) representation
+    public static int changeTime(String time) {
+        int pm = time.indexOf('p');
+        int colon = time.indexOf(':');
+        String a = time.substring(0, colon);
+        int hours;
+        if(pm == -1) {
+            if(a.length() < 2) {
+                hours =  Character.getNumericValue(a.charAt(0)) * 60;
+            }
+            else {
+                int ten = Character.getNumericValue(a.charAt(0));
+                int one = Character.getNumericValue(a.charAt(1));
+                hours = ten* 10 + one;
+                if(hours < 12) {
+                    hours = hours * 60;
+                }
+                else {
+                    hours = 0;
+                }
+            }
+        }
+
+        else {
+            if(a.length() < 2) {
+                hours =  (Character.getNumericValue(a.charAt(0)) + 12 ) * 60;
+            }
+            else {
+                int te = Character.getNumericValue(a.charAt(0));
+                int on = Character.getNumericValue(a.charAt(1));
+                hours = te * 10 + on;
+                hours = (hours + 12) * 60;
+            }
+        }
+        String b = (time.substring(colon+1, colon+3));
+        int tens = Character.getNumericValue(b.charAt(0));
+        int ones = Character.getNumericValue(b.charAt(1));
+        int minutes = tens*10 + ones;
+        return minutes + hours;
+    }
+
+    // Takes a string form of a task and adds it to the task map
     public void taskStringToMap(String input){
         String[] words = input.split(" ");
         if (words.length >= 2){

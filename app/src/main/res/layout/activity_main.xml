@@ -66,16 +66,17 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         <Button
-            android:id = "@+id/schedule_button"
+            android:id="@+id/schedule_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below = "@id/requiredTimeRecyclerView"
+            android:layout_below="@id/requiredTimeRecyclerView"
             android:layout_centerInParent="true"
-            android:background = "@color/Light_Blue"
             android:layout_marginTop="20dp"
-            android:text = "Create Schedule"
-            android:textColor="@color/white"
-            android:padding= "10dp"/>
+            android:background="@color/Light_Blue"
+            android:onClick="openSchedule"
+            android:padding="10dp"
+            android:text="Create Schedule"
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 

@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.clockly.Adapter.ToDoAdapter;
+import com.example.clockly.database.DbHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 
@@ -26,10 +27,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity  {
     private RecyclerView taskRecyclerView;
     private ToDoAdapter tasksAdapter;
-    private DrawerLayout drawerLayout;
-    private ActionBarDrawerToggle uToggle;
     private List<ToDoModel> taskList;
-    private FloatingActionButton button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +44,7 @@ public class MainActivity extends AppCompatActivity  {
         tasksAdapter = new ToDoAdapter(this);
         taskRecyclerView.setAdapter(tasksAdapter);
 
+        // Don't know how to update the UI to reflect the current tasks???
         ToDoModel task = new ToDoModel();
         task.setTask("This is a test task");
         task.setStatus(0);
@@ -83,5 +82,16 @@ public class MainActivity extends AppCompatActivity  {
         return true;
     }
 
+    public void openSchedule(View view){
+        Intent intent = new Intent(this, ScheduleActivity.class);
+        startActivity(intent);
+    }
 
+    public void deleteTask(View view){
+
+    }
+
+    public void deleteRequirement(View view){
+
+    }
 }
