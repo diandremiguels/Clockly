@@ -12,7 +12,7 @@ public class DbHelper extends SQLiteOpenHelper {
         super(context, com.example.clockly.database.TaskContract.DB_NAME, null, com.example.clockly.database.TaskContract.DB_VERSION);
     }
 
-    @Override
+    @Override // Creates table for tasks and table for requirements
     public void onCreate(SQLiteDatabase db) {
         String createTaskTable = "CREATE TABLE " + com.example.clockly.database.TaskContract.TaskEntry.TASK_TABLE + " ( " +
                 com.example.clockly.database.TaskContract.TaskEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -24,7 +24,7 @@ public class DbHelper extends SQLiteOpenHelper {
         db.execSQL(createReqTable);
     }
 
-    @Override
+    @Override // Updates database if out-of-date
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("DROP TABLE IF EXISTS " + com.example.clockly.database.TaskContract.TaskEntry.TASK_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + TaskContract.TaskEntry.REQ_TABLE);

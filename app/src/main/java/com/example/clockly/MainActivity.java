@@ -49,20 +49,26 @@ public class MainActivity extends AppCompatActivity  {
         updateUI();
     }
 
-
+    // Opens dialog box asking for user to input their task(s)
     public void openDialog () {
         dialog dialog = new dialog();
         dialog.show(getSupportFragmentManager(),"example dialog");
     }
+
+    // Opens dialog box asking for user to input their required time(s)
     public void openRequiredTimeDialog() {
         dialogRequiredTime dialog = new dialogRequiredTime();
         dialog.show(getSupportFragmentManager(), "required time dialog");
     }
+
+    // Creates pop up menu in the corner.
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.navigation_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
+
+    // Handles button activity for different items in the pop up menu.
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {
             case R.id.tasks:
@@ -78,11 +84,13 @@ public class MainActivity extends AppCompatActivity  {
         return true;
     }
 
+    // Allows button to start the ScheduleActivity
     public void openSchedule(View view){
         Intent intent = new Intent(this, ScheduleActivity.class);
         startActivity(intent);
     }
 
+    // updates the UI to reflect the current tasks/requirements stored in the database.
     public void updateUI(){
         // Handle task list
         List<String> tasks = getAllTasks(TaskContract.TaskEntry.TASK_TABLE);
@@ -123,6 +131,7 @@ public class MainActivity extends AppCompatActivity  {
         }
     }
 
+    // Creates a list of strings containing all the tasks in the given table from the database.
     private List<String> getAllTasks(String table){
         List<String> tasks = new ArrayList<>();
         String selectQuery = "SELECT  * FROM " + table;
@@ -141,6 +150,7 @@ public class MainActivity extends AppCompatActivity  {
         return tasks;
     }
 
+    // Deletes the task corresponding to the displayed item from the database.
     public void deleteTask(View view){
         View parent = (View) view.getParent();
         TextView taskTextView = (TextView) parent.findViewById(R.id.task_title);
@@ -154,6 +164,7 @@ public class MainActivity extends AppCompatActivity  {
         updateUI();
     }
 
+    // Deletes the requirement corresponding to the displayed item from the database.
     public void deleteRequirement(View view){
         View parent = (View) view.getParent();
         TextView taskTextView = (TextView) parent.findViewById(R.id.task_title);
@@ -166,6 +177,7 @@ public class MainActivity extends AppCompatActivity  {
         updateUI();
     }
 
+    // Converts the String task from the database into the display String.
     private String makeTaskOutput(String task){
         String[] words = task.split(" ");
         String output = "";
@@ -180,6 +192,7 @@ public class MainActivity extends AppCompatActivity  {
         return output;
     }
 
+    //Converts the displayed task into a String the database will understand.
     private String translateTaskOutput(String taskOutput){
         String[] words = taskOutput.split(" ");
         String output = "";
@@ -194,6 +207,7 @@ public class MainActivity extends AppCompatActivity  {
         return output;
     }
 
+    // Converts the String requirement from the database into the display String.
     private String makeReqOutput(String req){
         String[] words = req.split(" ");
         String output = "";
@@ -209,6 +223,7 @@ public class MainActivity extends AppCompatActivity  {
         return output;
     }
 
+    // Converts the displayed requirement into a String the database will understand.
     private String translateReqOutput(String reqOutput){
         String[] words = reqOutput.split(" ");
         String output = "";

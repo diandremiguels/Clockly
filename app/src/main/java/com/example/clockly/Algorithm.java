@@ -30,14 +30,7 @@ public class Algorithm {
     public Algorithm() {
         tasks = new TreeMap<Integer, List<String>>();
         schedule = new TreeMap<Integer, List<String>>();
-        // The below lines are for testing purposes
-//        scheduleActivity("sleep", 1380, 480);
-//        scheduleActivity("breakfast", 510, 540);
-//        scheduleActivity("lunch", 720, 750);
-//        scheduleActivity("dinner", 1140, 1170);
     }
-
-    // Might need to change what goes in the database so that removing actually works...
 
     // Adds specified task to the schedule, mapping the task to the times it begins and ends at.
     // Also specifies whether the task starts or ends at that time.
@@ -55,18 +48,6 @@ public class Algorithm {
         tasks.put(time, currentTasks);
     }
 
-    // Prints each saved task with its associated time to complete.
-    // Prints task in order from least to greatest time to complete.
-    // NEED THIS TO CHANGE TO RETURN A LIST OF STRINGS INSTEAD
-    public void printTasks() {
-        System.out.println("\nHere are a list of your daily tasks:");
-        for (int time : tasks.keySet()){
-            for (String task : tasks.get(time)){
-                System.out.println(task + ": " + time + " minutes");
-            }
-        }
-    }
-
     // Returns a string with the given time in minutes converted to 12 hour standard format.
     public String minutesToStandard(int time){
         int hours = time / MINUTES_IN_HOUR;
@@ -79,14 +60,6 @@ public class Algorithm {
         }
         int minutes = time % MINUTES_IN_HOUR;
         return "" + hours +  ":" + ((minutes < 10)? "0" : "") + minutes + ((isPM)? " PM" : " AM");
-    }
-
-    // Prints mapped schedule to the console, listing what tasks begin or end at each time.
-    public void printSchedule(){
-        System.out.println("\nHere's your schedule:");
-        for (int time : this.schedule.keySet()){
-            System.out.println(minutesToStandard(time) + "-> " + schedule.get(time).get(1) + " " + schedule.get(time).get(0));
-        }
     }
 
     // Takes current list of tasks and maps each task to the specific times the task should start or end at.
@@ -133,9 +106,7 @@ public class Algorithm {
                         }
                         if (newStart != -1 && newEnd < this.MINUTES_IN_DAY){
                             this.scheduleActivity(task, newStart, newEnd);
-                        } else {
-                            System.out.println(time + " minutes of " + task + " doesn't fit into the schedule");
-                        }
+                        } // if outside of the scope of the day, leaves the task and doesn't include it in the schedule
                     }
                 }
             }
@@ -249,15 +220,8 @@ public class Algorithm {
         }
     }
 
-    public List<String> taskMapToStringList(){
-        List<String> tasks = new ArrayList<>();
-        for (int time : this.tasks.keySet()){
-            tasks.add(time + this.tasks.get(time).get(0) + this.tasks.get(time).get(1));
-            // format is "30 homework start"
-        }
-        return tasks;
-    }
-
+    // Converts the schedule map into a list of strings representing what times each task
+    // begins or ends at
     public List<String> scheduleMapToList(){
         List<String> output = new ArrayList<>();
         for (int time : this.schedule.keySet()){

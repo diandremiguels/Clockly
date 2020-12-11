@@ -48,28 +48,30 @@ public class ScheduleActivity extends AppCompatActivity {
         updateUI();
     }
 
+    // updates the UI to show the schedule for the current tasks and requirements in the database
     private void updateUI() {
          List<String> tasks = getAllTasks(TaskContract.TaskEntry.TASK_TABLE);
          List<String> requirements = getAllTasks(TaskContract.TaskEntry.REQ_TABLE);
          algorithm.addAllRequirements(requirements);
          algorithm.addAllTasks(tasks);
-        algorithm.mapSchedule();
-        List<String> taskList = algorithm.scheduleMapToList();
-
-        if (mAdapter == null) {
+         algorithm.mapSchedule();
+         List<String> taskList = algorithm.scheduleMapToList();
+         if (mAdapter == null) {
             mAdapter = new ArrayAdapter<>(this,
                     R.layout.schedule_task_layout, // what view to use for the items
                     R.id.task_title, // where to put the String of data
                     taskList); // where to get all the data
             mTaskListView.setAdapter(mAdapter); // set it as the adapter of the ListView instance
-        } else {
+         } else {
             // if the adapter's already made, clear it, re-populate it, and notify the view that the data has changed
             mAdapter.clear();
             mAdapter.addAll(taskList);
             mAdapter.notifyDataSetChanged();
-        }
+         }
     }
 
+    // gets all tasks/requirements from the specified table in the database in the form of
+    // a list of strings.
     private List<String> getAllTasks(String table){
         List<String> tasks = new ArrayList<>();
         String selectQuery = "SELECT  * FROM " + table;

@@ -22,6 +22,7 @@ public class dialog extends AppCompatDialogFragment {
     private EditText editTextDuration;
     private DbHelper mHelper;
 
+    // Creates pop-up menu asking for information about tasks
     public AlertDialog onCreateDialog(Bundle savedInstanceState) {
         mHelper = new DbHelper(getContext());
         final EditText taskEditText = new EditText(getActivity());
@@ -35,7 +36,7 @@ public class dialog extends AppCompatDialogFragment {
         builder.setView(view);
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @NonNull
-            @Override
+            @Override // adds task information to database
             public void onClick(DialogInterface dialogInterface, int i) {
                 String name = String.valueOf(editTextTask.getText());
                 String duration = String.valueOf(editTextDuration.getText());
@@ -48,7 +49,7 @@ public class dialog extends AppCompatDialogFragment {
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-
+            // does nothing when negative button is pressed
             public void onClick(DialogInterface dialogInterface, int i) {
             }
         });
