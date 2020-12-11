@@ -34,7 +34,7 @@ public class ScheduleActivity extends AppCompatActivity {
     private ArrayAdapter<String> mAdapter;
     private Algorithm algorithm;
 
-    @Override
+    @Override//Initializes the layout for schedule page in app
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schedule);

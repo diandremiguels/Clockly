@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity  {
     private ListView mTaskListView;
     private ListView mReqListView;
 
-    @Override
+    @Override //Initializes the layout for main page of the app
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);

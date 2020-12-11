@@ -36,7 +36,7 @@ public class dialog extends AppCompatDialogFragment {
         builder.setView(view);
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @NonNull
-            @Override // adds task information to database
+            @Override // adds task information to database once the user clicks add
             public void onClick(DialogInterface dialogInterface, int i) {
                 String name = String.valueOf(editTextTask.getText());
                 String duration = String.valueOf(editTextDuration.getText());
@@ -49,7 +49,7 @@ public class dialog extends AppCompatDialogFragment {
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            // does nothing when negative button is pressed
+            // does nothing when cancel is pressed
             public void onClick(DialogInterface dialogInterface, int i) {
             }
         });

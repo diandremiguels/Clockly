@@ -8,7 +8,9 @@ import android.os.Handler;
 
 public class SplashActivity extends AppCompatActivity {
 
-    @Override
+    @Override//Initializes the layout for splash activity
+            //Handles the duration of the splash activity
+            //after user clicks app
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);

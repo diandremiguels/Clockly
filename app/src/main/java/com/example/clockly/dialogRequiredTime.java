@@ -21,7 +21,7 @@ public class dialogRequiredTime extends AppCompatDialogFragment {
     private EditText editTextTask;
     private EditText editTextStart;
     private EditText editTextEnd;
-    private DbHelper mHelper; // don't know how to initialize properly yet :/
+    private DbHelper mHelper;
 
     // Creates pop-up menu asking for information about required time
     public AlertDialog onCreateDialog(Bundle savedInstanceState) {
@@ -38,7 +38,8 @@ public class dialogRequiredTime extends AppCompatDialogFragment {
         builder.setView(view);
         builder.setPositiveButton("Add", new DialogInterface.OnClickListener() {
             @NonNull
-            @Override // adds required time information into database
+            @Override // adds required start and end time along with the required time name
+                    // into database once the user clicks add
             public void onClick(DialogInterface dialogInterface, int i) {
                 String taskName = String.valueOf(editTextTask.getText());
                 String startTime = String.valueOf(editTextStart.getText());
