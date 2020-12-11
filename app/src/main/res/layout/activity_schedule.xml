@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_width = "match_parent"
     android:fillViewport="true">
-<androidx.constraintlayout.widget.ConstraintLayout
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ScheduleActivity">
@@ -27,6 +27,7 @@
         android:id="@+id/list_todo"
         android:layout_marginTop="10dp"
         android:paddingLeft = "10dp"
+        android:layout_below = "@+id/schedule_toolbar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:divider="@android:color/transparent"
@@ -38,5 +39,5 @@
         app:layout_constraintTop_toBottomOf="@+id/schedule_toolbar"
         tools:ignore="MissingConstraints" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
 </ScrollView>
