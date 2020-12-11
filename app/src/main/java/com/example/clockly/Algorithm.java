@@ -44,8 +44,8 @@ public class Algorithm {
     // Can be used to automatically schedule essential activities like sleep or meal times.
     // Also used to schedule nonessential activities like homework in a scheduling algorithm.
     public void scheduleActivity(String taskName, int startTime, int endTime){
-        this.schedule.put(startTime, new ArrayList<>(Arrays.asList(taskName, "start"))); // technically forbidden feature but will need to figure something else out later
-        this.schedule.put(endTime, new ArrayList<>(Arrays.asList(taskName, "end")));
+        this.schedule.put(startTime, new ArrayList<>(Arrays.asList(taskName, "Start"))); // technically forbidden feature but will need to figure something else out later
+        this.schedule.put(endTime, new ArrayList<>(Arrays.asList(taskName, "End")));
     }
 
     // Adds task to map, mapping tasks to the amount of time it would take to complete.
@@ -114,12 +114,12 @@ public class Algorithm {
                         this.scheduleActivity(task, 0, time);
                     } else {
                         for (int previousTime : this.schedule.keySet()){
-                            if (schedule.get(previousTime).contains("end") && newStart == -1){
+                            if (schedule.get(previousTime).contains("End") && newStart == -1){
                                 int possibleStartTime = previousTime + ((schedule.get(previousTime).contains(task))? this.SHORT_BREAK : this.LONG_BREAK);
                                 int possibleEndTime = possibleStartTime + time;
                                 boolean fitsTimeSlot = true;
                                 for (int otherTime : this.schedule.keySet()){
-                                    if (this.schedule.get(otherTime).contains("start"));{
+                                    if (this.schedule.get(otherTime).contains("Start"));{
                                         if (possibleStartTime < otherTime && possibleEndTime > otherTime - ((schedule.get(otherTime).contains(task))? this.SHORT_BREAK : this.LONG_BREAK)){
                                             fitsTimeSlot = false;
                                         }

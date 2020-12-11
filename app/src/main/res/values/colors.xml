@@ -9,4 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name = "Light_Blue">#1ebbd7 </color>
     <color name = "Dark_Blue">	#107dac</color>
+    <color name = "blue"> #b3e5fc</color>
+    <color name = "Light_Grey">#D3D3D3</color>
+    <color name = "Light_Orange">#FF971A</color>
+    <color name = "orange">#FF8303</color>
+
 </resources>

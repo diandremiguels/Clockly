@@ -95,6 +95,9 @@ public class MainActivity extends AppCompatActivity  {
             case R.id.required_times:
                 openRequiredTimeDialog();
                 return true;
+            case R.id.refresh:
+               updateUI();
+                return true;
         }
         return true;
     }

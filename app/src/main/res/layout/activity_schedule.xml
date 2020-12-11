@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width = "match_parent"
+    android:fillViewport="true">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ScheduleActivity">
@@ -10,7 +15,7 @@
         android:id="@+id/schedule_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/Light_Blue"
+        android:background="@color/Light_Orange"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,9 +25,18 @@
 
     <ListView
         android:id="@+id/list_todo"
+        android:layout_marginTop="10dp"
+        android:paddingLeft = "10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="15.0sp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft = "5dp"
+        android:layout_marginBottom="40dp"
+        android:layout_centerInParent="true"
         app:layout_constraintTop_toBottomOf="@+id/schedule_toolbar"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

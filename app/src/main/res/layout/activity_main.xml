@@ -22,29 +22,38 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/topAppBar"
+            app:popupTheme="@style/Theme.customPopup"
             android:background = "@color/Light_Blue"
             android:theme = "@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             android:layout_width="match_parent"
             android:layout_height = "?attr/actionBarSize"
             app:menu="@menu/navigation_menu"
-            app:title="  Daily Tasks" />
+            app:title = "CLOCKLY" />
 
         <TextView
-            android:layout_height = "wrap_content"
-            android:layout_width = "wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_centerInParent="true"
-            android:layout_marginBottom="20dp"
-            android:text = "Tasks of the Day"
-            android:layout_below = "@id/topAppBar"
             android:id="@+id/tasksText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/topAppBar"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Daily Tasks"
             android:textColor="@color/black"
-            />
+            android:textSize="20dp"
+            android:textStyle="normal" />
         <ListView
             android:id="@+id/list_tasks"
+            android:paddingLeft = "8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tasksText"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="15.0sp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft = "5dp"
+            android:layout_centerInParent="true"
             tools:ignore="MissingConstraints"/>
         <TextView
             android:layout_height = "wrap_content"
@@ -53,14 +62,21 @@
             android:layout_marginBottom="20dp"
             android:layout_centerInParent="true"
             android:text = "Required Times"
+            android:fontFamily = "sans-serif-medium"
+            android:textSize = "20dp"
             android:id="@+id/timesText"
             android:textColor="@color/black"
             android:layout_below = "@id/list_tasks" />
         <ListView
             android:id="@+id/list_reqs"
+            android:paddingLeft = "8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="15.0sp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft = "5dp"
+            android:layout_centerInParent="true"
             android:layout_below = "@id/timesText"/>
 
         <Button
@@ -70,7 +86,7 @@
             android:layout_below="@id/list_reqs"
             android:layout_centerInParent="true"
             android:layout_marginTop="20dp"
-            android:background="@color/Light_Blue"
+            android:background="@color/Light_Orange"
             android:onClick="openSchedule"
             android:padding="10dp"
             android:text="Create Schedule"

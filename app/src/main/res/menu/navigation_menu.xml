@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
+
     <group>
         <item android:id = "@+id/tasks"
             android:title = "Add New Task" />
         <item android:id = "@+id/required_times"
             android:title = "Enter Required Times" />
+        <item android:id = "@+id/refresh"
+            android:title = "Refresh Page"/>
+
     </group>
 </menu>
 <!--    <group android:checkableBehavior="single">-->
