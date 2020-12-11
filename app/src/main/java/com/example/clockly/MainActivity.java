@@ -31,9 +31,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {
-    private RecyclerView taskRecyclerView;
-    //private ToDoAdapter tasksAdapter;
-    private List<ToDoModel> taskList;
     private DbHelper mHelper;
     private ArrayAdapter<String> taskAdapter;
     private ArrayAdapter<String> reqAdapter;
@@ -47,30 +44,9 @@ public class MainActivity extends AppCompatActivity  {
         mTaskListView = (ListView) findViewById(R.id.list_tasks);
         mReqListView = (ListView) findViewById(R.id.list_reqs);
         mHelper = new DbHelper(this);
-        //This is the menu bar
         Toolbar myToolbar = (Toolbar) findViewById(R.id.topAppBar);
         setSupportActionBar(myToolbar);
         updateUI();
-        // CURRENT ISSUES:
-        //      -DISPLAY DOESN'T UPDATE AT RIGHT TIME
-
-//        //This is for the tasks view
-//        taskList = new ArrayList<>();
-//        taskRecyclerView = findViewById(R.id.tasksRecyclerView);
-//        taskRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        tasksAdapter = new ToDoAdapter(this);
-//        taskRecyclerView.setAdapter(tasksAdapter);
-//
-//        // Don't know how to update the UI to reflect the current tasks???
-//        ToDoModel task = new ToDoModel();
-//        task.setTask("This is a test task");
-//        task.setStatus(0);
-//        task.setId(1);
-//        taskList.add(task);
-//        taskList.add(task);
-//        taskList.add(task);
-//        taskList.add(task);
-//        tasksAdapter.setTasks(taskList);
     }
 
 

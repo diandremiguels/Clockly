@@ -220,7 +220,12 @@ public class Algorithm {
                 int te = Character.getNumericValue(a.charAt(0));
                 int on = Character.getNumericValue(a.charAt(1));
                 hours = te * 10 + on;
-                hours = (hours + 12) * 60;
+                if(hours == 12) {
+                    hours = hours *60;
+                }
+                else {
+                    hours = (hours + 12) * 60;
+                }
             }
         }
         String b = (time.substring(colon+1, colon+3));
