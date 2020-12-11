@@ -40,13 +40,12 @@
             android:id="@+id/tasksText"
             android:textColor="@color/black"
             />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/tasksRecyclerView"
-            android:layout_below = "@id/tasksText"
-            android:layout_width="match_parent"
+        <ListView
+            android:id="@+id/list_tasks"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="true"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            android:layout_below="@id/tasksText"
+            tools:ignore="MissingConstraints"/>
         <TextView
             android:layout_height = "wrap_content"
             android:layout_width = "wrap_content"
@@ -56,20 +55,19 @@
             android:text = "Required Times"
             android:id="@+id/timesText"
             android:textColor="@color/black"
-            android:layout_below = "@id/tasksRecyclerView" />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/requiredTimeRecyclerView"
-            android:layout_below = "@id/timesText"
-            android:layout_width="match_parent"
+            android:layout_below = "@id/list_tasks" />
+        <ListView
+            android:id="@+id/list_reqs"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:nestedScrollingEnabled="true"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+            tools:ignore="MissingConstraints"
+            android:layout_below = "@id/timesText"/>
 
         <Button
             android:id="@+id/schedule_button"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_below="@id/requiredTimeRecyclerView"
+            android:layout_below="@id/list_reqs"
             android:layout_centerInParent="true"
             android:layout_marginTop="20dp"
             android:background="@color/Light_Blue"

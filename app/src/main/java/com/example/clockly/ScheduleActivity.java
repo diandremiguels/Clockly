@@ -20,7 +20,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.clockly.Adapter.ToDoAdapter;
+// import com.example.clockly.Adapter.ToDoAdapter;
 import com.example.clockly.database.DbHelper;
 import com.example.clockly.database.TaskContract;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;

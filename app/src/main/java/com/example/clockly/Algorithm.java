@@ -31,10 +31,10 @@ public class Algorithm {
         tasks = new TreeMap<Integer, List<String>>();
         schedule = new TreeMap<Integer, List<String>>();
         // The below lines are for testing purposes
-        scheduleActivity("sleep", 1380, 480);
-        scheduleActivity("breakfast", 510, 540);
-        scheduleActivity("lunch", 720, 750);
-        scheduleActivity("dinner", 1140, 1170);
+//        scheduleActivity("sleep", 1380, 480);
+//        scheduleActivity("breakfast", 510, 540);
+//        scheduleActivity("lunch", 720, 750);
+//        scheduleActivity("dinner", 1140, 1170);
     }
 
     // Might need to change what goes in the database so that removing actually works...
